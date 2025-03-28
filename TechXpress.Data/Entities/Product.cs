@@ -12,7 +12,7 @@ namespace TechXpress.Data.Entities
     {
         [Key]
         public int ProductId { get; set; }
-        [Required, StringLength(100)]
+        [Required, StringLength(100),RegularExpression("/^[a-zA-Z]+$/")]
         public string Name { get; set; }
 
         [Required]

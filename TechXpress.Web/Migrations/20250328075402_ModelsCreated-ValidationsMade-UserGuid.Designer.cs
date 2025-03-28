@@ -12,8 +12,8 @@ using TechXpress.Data.Context;
 namespace TechXpress.Web.Migrations
 {
     [DbContext(typeof(TechXpressContext))]
-    [Migration("20250328051155_InitalDbCreate")]
-    partial class InitalDbCreate
+    [Migration("20250328075402_ModelsCreated-ValidationsMade-UserGuid")]
+    partial class ModelsCreatedValidationsMadeUserGuid
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -123,6 +123,26 @@ namespace TechXpress.Web.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("products");
+                });
+
+            modelBuilder.Entity("TechXpress.Data.Entities.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("users");
                 });
 
             modelBuilder.Entity("TechXpress.Data.Entities.OrderDetails", b =>

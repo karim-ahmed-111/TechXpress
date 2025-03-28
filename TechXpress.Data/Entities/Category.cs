@@ -11,7 +11,7 @@ namespace TechXpress.Data.Entities
     {
         [Key]
         public int CategoryId { get; set; }
-        [Required,StringLength(50)]
+        [Required,StringLength(50),RegularExpression("/^[a-zA-Z]+$/")]
         public string Name { get; set; }
 
         public ICollection<Product> products { get; set; }

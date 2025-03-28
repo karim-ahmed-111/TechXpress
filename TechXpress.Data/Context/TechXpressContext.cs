@@ -8,7 +8,7 @@ using TechXpress.Data.Entities;
 
 namespace TechXpress.Data.Context
 {
-    public class TechXpressContext:DbContext
+    public class TechXpressContext : DbContext
     {
         public TechXpressContext(DbContextOptions<TechXpressContext> options) : base(options) { }
 
@@ -18,7 +18,8 @@ namespace TechXpress.Data.Context
         public object Users { get; internal set; }
         public DbSet<Order> orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
-        
+
+       
 
     }
 }

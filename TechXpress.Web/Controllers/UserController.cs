@@ -21,15 +21,19 @@ public class UserController : Controller
     public async Task<IActionResult> GetUsers()
     {
         var users = await _userRepository.GetAllAsync();
+        if(users.Count()>0)
+        {
+
         return Ok(users);
+        }
+        return Ok("There Are No Users");
     }
 
     //Get A Specifc User By Id
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetUserById(int id)
+    public async Task<IActionResult> GetUserById(Guid id)
     {
-        if (id > 0)
-        {
+        
             var user = await _userRepository.GetByIdAsync(id);
             if (user != null)
             {
@@ -39,8 +43,8 @@ public class UserController : Controller
             {
                 return NotFound();
             }
-        }
-        return BadRequest();
+        
+        //return BadRequest();
     }
 
 
@@ -61,9 +65,9 @@ public class UserController : Controller
 
     //Put to update user details all 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateUser(int id, [FromBody] User user)
+    public async Task<IActionResult> UpdateUser(Guid id, [FromBody] User user)
     {
-        if (id != user.id)
+        if (id != user.Id)
         {
             return BadRequest("Id Doesnt Match User Id");
         }
@@ -86,10 +90,10 @@ public class UserController : Controller
     //Delete To Delete A Specific User
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteUser(int id)
+    public async Task<IActionResult> DeleteUser(Guid id)
     {
-        if (id > 0)
-        {
+        //if (id > 0)
+        //{
             var user = await _userRepository.GetByIdAsync(id);
             if (user != null)
             {
@@ -98,7 +102,7 @@ public class UserController : Controller
                 return Ok("User Deleted");
             }
             return NotFound();
-        }
-        return BadRequest();
+        //}
+        //return BadRequest();
     }
 }
