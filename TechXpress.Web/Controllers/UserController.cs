@@ -1,27 +1,39 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TechXpress.Data.Entities;
 using TechXpress.Data.Repositories;
 using TechXpress.Data.UnitOfWork;
 using TechXpress.Web.Models;
+using TechXpress.Data.DTOs;
 
 namespace TechXpress.Web.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize(Roles = "Admin")]
 public class UserController : Controller
 {
-    private readonly IUnitOfWork _unit;
-    public UserController(IUnitOfWork unit)
+    private readonly UserManager<ApplicationUser> _userManager;
+    public UserController(UserManager<ApplicationUser> userManager)
     {
-        _unit = unit;
+        _userManager = userManager;
     }
 
     //Get All Users
     [HttpGet]
     public async Task<IActionResult> GetUsers()
     {
-        var users = await _unit.Users.GetAllAsync();
+        var users = await _userManager.Users.Select(u => new UserDTO
+        {
+            Id = u.Id,
+            FullName = u.FullName,
+            Email = u.Email,
+            PhoneNumber = u.PhoneNumber
+        }).ToListAsync();
+
         if (users.Count() > 0)
         {
 
@@ -32,78 +44,41 @@ public class UserController : Controller
 
     //Get A Specifc User By Id
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetUserById(Guid id)
+    public async Task<IActionResult> GetUserById(string id)
     {
 
-        var user = await _unit.Users.GetByIdAsync(id);
+        var user = await _userManager.FindByIdAsync(id);
         if (user != null)
         {
-            return Ok(user);
+            var userDto = new UserDTO
+            {
+                Id = user.Id,
+                FullName = user.FullName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+            return Ok(userDto);
         }
         else
         {
-            return NotFound();
+            return NotFound("User Not Found");
         }
 
-        //return BadRequest();
-    }
-
-
-
-    //Post To add users
-    [HttpPost]
-    public async Task<IActionResult> CreateUser([FromBody] User user)
-    {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-        await _unit.Users.AddAsync(user);
-        await _unit.CompleteAsync();
-        return Ok("User Created");
-    }
-
-
-    //Put to update user details all 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateUser(Guid id, [FromBody] User user)
-    {
-        if (id != user.Id)
-        {
-            return BadRequest("Id Doesnt Match User Id");
-        }
-        var _user = await _unit.Users.GetByIdAsync(id);
-        if (_user != null)
-        {
-            _user.Name = user.Name;
-            _user.Email = user.Email;
-
-            _unit.Users.Update(_user);
-            await _unit.CompleteAsync();
-            return Ok("Details Updated");
-        }
-        return NotFound("There Is No User With The Corresponding Id");
 
     }
-
-
 
     //Delete To Delete A Specific User
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteUser(Guid id)
+    public async Task<IActionResult> DeleteUser(string id)
     {
-        //if (id > 0)
-        //{
-        var user = await _unit.Users.GetByIdAsync(id);
+
+        var user = await _userManager.FindByIdAsync(id);
         if (user != null)
         {
-            _unit.Users.Remove(user);
-            await _unit.CompleteAsync();
+            await _userManager.DeleteAsync(user);
             return Ok("User Deleted");
         }
         return NotFound();
-        //}
-        //return BadRequest();
     }
 }

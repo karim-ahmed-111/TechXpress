@@ -12,11 +12,9 @@ namespace TechXpress.Data.UnitOfWork
     {
         private readonly TechXpressContext _dbContext;
 
-        public IUserRepository Users { get; }
         public UnitOfWork(TechXpressContext context)
         {
             _dbContext = context;
-            Users = new UserRepository(_dbContext);
         }
 
         public async Task<int> CompleteAsync()
