@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using TechXpress.Data.Entities;
 using TechXpress.Data.Repositories;
+using TechXpress.Data.UnitOfWork;
 using TechXpress.Web.Models;
 
 namespace TechXpress.Web.Controllers;
@@ -10,21 +11,21 @@ namespace TechXpress.Web.Controllers;
 [ApiController]
 public class UserController : Controller
 {
-    private readonly IUserRepository _userRepository;
-    public UserController(IUserRepository userRepository)
+    private readonly IUnitOfWork _unit;
+    public UserController(IUnitOfWork unit)
     {
-        _userRepository = userRepository;
+        _unit = unit;
     }
 
     //Get All Users
     [HttpGet]
     public async Task<IActionResult> GetUsers()
     {
-        var users = await _userRepository.GetAllAsync();
-        if(users.Count()>0)
+        var users = await _unit.Users.GetAllAsync();
+        if (users.Count() > 0)
         {
 
-        return Ok(users);
+            return Ok(users);
         }
         return Ok("There Are No Users");
     }
@@ -33,17 +34,17 @@ public class UserController : Controller
     [HttpGet("{id}")]
     public async Task<IActionResult> GetUserById(Guid id)
     {
-        
-            var user = await _userRepository.GetByIdAsync(id);
-            if (user != null)
-            {
-                return Ok(user);
-            }
-            else
-            {
-                return NotFound();
-            }
-        
+
+        var user = await _unit.Users.GetByIdAsync(id);
+        if (user != null)
+        {
+            return Ok(user);
+        }
+        else
+        {
+            return NotFound();
+        }
+
         //return BadRequest();
     }
 
@@ -51,14 +52,14 @@ public class UserController : Controller
 
     //Post To add users
     [HttpPost]
-    public async Task<IActionResult> CreateUser( [FromBody] User user)
+    public async Task<IActionResult> CreateUser([FromBody] User user)
     {
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
         }
-        await _userRepository.AddAsync(user);
-        await _userRepository.SaveChangesAsync();
+        await _unit.Users.AddAsync(user);
+        await _unit.CompleteAsync();
         return Ok("User Created");
     }
 
@@ -71,14 +72,14 @@ public class UserController : Controller
         {
             return BadRequest("Id Doesnt Match User Id");
         }
-        var _user = await _userRepository.GetByIdAsync(id);
+        var _user = await _unit.Users.GetByIdAsync(id);
         if (_user != null)
         {
             _user.Name = user.Name;
             _user.Email = user.Email;
 
-            _userRepository.Update(_user);
-            await _userRepository.SaveChangesAsync();
+            _unit.Users.Update(_user);
+            await _unit.CompleteAsync();
             return Ok("Details Updated");
         }
         return NotFound("There Is No User With The Corresponding Id");
@@ -94,14 +95,14 @@ public class UserController : Controller
     {
         //if (id > 0)
         //{
-            var user = await _userRepository.GetByIdAsync(id);
-            if (user != null)
-            {
-                _userRepository.Remove(user);
-                await _userRepository.SaveChangesAsync();
-                return Ok("User Deleted");
-            }
-            return NotFound();
+        var user = await _unit.Users.GetByIdAsync(id);
+        if (user != null)
+        {
+            _unit.Users.Remove(user);
+            await _unit.CompleteAsync();
+            return Ok("User Deleted");
+        }
+        return NotFound();
         //}
         //return BadRequest();
     }

@@ -15,7 +15,6 @@ namespace TechXpress.Data.Context
         public DbSet<Product> products { get; set; }
         public DbSet<Category> categories { get; set; }
         public DbSet<User> users { get; set; }
-        public object Users { get; internal set; }
         public DbSet<Order> orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
 

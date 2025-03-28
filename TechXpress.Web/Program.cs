@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using TechXpress.Data.Context;
 using TechXpress.Data.Repositories;
+using TechXpress.Data.UnitOfWork;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,8 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddDbContext<TechXpressContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnectionString"), b => b.MigrationsAssembly("TechXpress.Web")));
 
