@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TechXpress.Data.Context;
 
@@ -11,9 +12,11 @@ using TechXpress.Data.Context;
 namespace TechXpress.Web.Migrations
 {
     [DbContext(typeof(TechXpressContext))]
-    partial class TechXpressContextModelSnapshot : ModelSnapshot
+    [Migration("20250328054557_TestingUser")]
+    partial class TestingUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
