@@ -12,3 +12,4 @@ D:\TechXpressV2\TechXpress.Data\obj\Debug\net9.0\refint\TechXpress.Data.dll
 D:\TechXpressV2\TechXpress.Data\obj\Debug\net9.0\TechXpress.Data.pdb
 D:\TechXpressV2\TechXpress.Data\obj\Debug\net9.0\TechXpress.Data.genruntimeconfig.cache
 D:\TechXpressV2\TechXpress.Data\obj\Debug\net9.0\ref\TechXpress.Data.dll
+D:\TechXpressV2\TechXpress.Data\obj\Debug\net9.0\TechXpress.Data.sourcelink.json

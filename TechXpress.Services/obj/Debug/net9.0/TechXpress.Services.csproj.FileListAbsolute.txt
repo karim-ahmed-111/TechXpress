@@ -15,3 +15,4 @@ D:\TechXpressV2\TechXpress.Services\obj\Debug\net9.0\TechXpress.Services.pdb
 D:\TechXpressV2\TechXpress.Services\obj\Debug\net9.0\ref\TechXpress.Services.dll
 D:\TechXpressV2\TechXpress.Services\bin\Debug\net9.0\TechXpress.Services.runtimeconfig.json
 D:\TechXpressV2\TechXpress.Services\obj\Debug\net9.0\TechXpress.Services.genruntimeconfig.cache
+D:\TechXpressV2\TechXpress.Services\obj\Debug\net9.0\TechXpress.Services.sourcelink.json

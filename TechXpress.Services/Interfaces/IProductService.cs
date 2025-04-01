@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TechXpress.Data.Models;
 
-namespace TechXpress.Services.Services
+namespace TechXpress.Services.Interfaces
 {
     public interface IProductService
     {

@@ -1,8 +1,8 @@
 ﻿using TechXpress.Data.Models;
 using TechXpress.Data.Repositories.ProductRepository;
-using TechXpress.Services.Services;
 using TechXpress.Data.Models;
 using TechXpress.Data.Repositories;
+using TechXpress.Services.Interfaces;
 
 public class ProductService : IProductService
 {

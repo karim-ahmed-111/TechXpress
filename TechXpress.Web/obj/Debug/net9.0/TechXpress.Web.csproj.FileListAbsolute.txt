@@ -233,3 +233,4 @@ D:\TechXpressV2\TechXpress.Web\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.W
 D:\TechXpressV2\TechXpress.Web\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\TechXpressV2\TechXpress.Web\bin\Debug\net9.0\Newtonsoft.Json.dll
 D:\TechXpressV2\TechXpress.Web\bin\Debug\net9.0\Stripe.net.dll
+D:\TechXpressV2\TechXpress.Web\obj\Debug\net9.0\TechXpress.Web.sourcelink.json

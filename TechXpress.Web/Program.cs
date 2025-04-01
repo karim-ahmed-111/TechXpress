@@ -7,9 +7,10 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using TechXpress.Data.Context;
 using TechXpress.Data.Models;
+using TechXpress.Data.Repositories.CategoryRepository;
 using TechXpress.Data.Repositories.ProductRepository;
 using TechXpress.Services.Interfaces;
-using TechXpress.Services.Services;
+using TechXpress.Services.Services.CategoryServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +47,8 @@ builder.Services.AddAuthentication(x =>
 });
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IOrderService, OrderService>();

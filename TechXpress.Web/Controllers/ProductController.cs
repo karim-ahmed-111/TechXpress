@@ -1,7 +1,6 @@
 ﻿// TechXpressApi.Web/Controllers/ProductsController.cs
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TechXpress.Services.Services;
 using TechXpress.Data.Models;
 using TechXpress.Services.Interfaces;
 
