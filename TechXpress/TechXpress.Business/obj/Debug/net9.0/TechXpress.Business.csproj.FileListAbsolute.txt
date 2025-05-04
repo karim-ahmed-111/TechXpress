@@ -1,0 +1,17 @@
+D:\DEPI_Project\TechXpress\TechXpress.Business\obj\Debug\net9.0\TechXpress.Business.csproj.AssemblyReference.cache
+D:\DEPI_Project\TechXpress\TechXpress.Business\obj\Debug\net9.0\TechXpress.Business.GeneratedMSBuildEditorConfig.editorconfig
+D:\DEPI_Project\TechXpress\TechXpress.Business\obj\Debug\net9.0\TechXpress.Business.AssemblyInfoInputs.cache
+D:\DEPI_Project\TechXpress\TechXpress.Business\obj\Debug\net9.0\TechXpress.Business.AssemblyInfo.cs
+D:\DEPI_Project\TechXpress\TechXpress.Business\obj\Debug\net9.0\TechXpress.Business.csproj.CoreCompileInputs.cache
+D:\DEPI_Project\TechXpress\TechXpress.Business\bin\Debug\net9.0\TechXpress.Business.deps.json
+D:\DEPI_Project\TechXpress\TechXpress.Business\bin\Debug\net9.0\TechXpress.Business.runtimeconfig.json
+D:\DEPI_Project\TechXpress\TechXpress.Business\bin\Debug\net9.0\TechXpress.Business.dll
+D:\DEPI_Project\TechXpress\TechXpress.Business\bin\Debug\net9.0\TechXpress.Business.pdb
+D:\DEPI_Project\TechXpress\TechXpress.Business\bin\Debug\net9.0\TechXpress.Data.dll
+D:\DEPI_Project\TechXpress\TechXpress.Business\bin\Debug\net9.0\TechXpress.Data.pdb
+D:\DEPI_Project\TechXpress\TechXpress.Business\obj\Debug\net9.0\TechXpre.916AADA8.Up2Date
+D:\DEPI_Project\TechXpress\TechXpress.Business\obj\Debug\net9.0\TechXpress.Business.dll
+D:\DEPI_Project\TechXpress\TechXpress.Business\obj\Debug\net9.0\refint\TechXpress.Business.dll
+D:\DEPI_Project\TechXpress\TechXpress.Business\obj\Debug\net9.0\TechXpress.Business.pdb
+D:\DEPI_Project\TechXpress\TechXpress.Business\obj\Debug\net9.0\TechXpress.Business.genruntimeconfig.cache
+D:\DEPI_Project\TechXpress\TechXpress.Business\obj\Debug\net9.0\ref\TechXpress.Business.dll

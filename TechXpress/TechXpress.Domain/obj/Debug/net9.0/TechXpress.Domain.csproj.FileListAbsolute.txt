@@ -1,0 +1,5 @@
+D:\DEPI_Project\TechXpress\TechXpress.Domain\obj\Debug\net9.0\TechXpress.Domain.csproj.AssemblyReference.cache
+D:\DEPI_Project\TechXpress\TechXpress.Domain\obj\Debug\net9.0\TechXpress.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\DEPI_Project\TechXpress\TechXpress.Domain\obj\Debug\net9.0\TechXpress.Domain.AssemblyInfoInputs.cache
+D:\DEPI_Project\TechXpress\TechXpress.Domain\obj\Debug\net9.0\TechXpress.Domain.AssemblyInfo.cs
+D:\DEPI_Project\TechXpress\TechXpress.Domain\obj\Debug\net9.0\TechXpress.Domain.csproj.CoreCompileInputs.cache
